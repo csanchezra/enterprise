@@ -29,7 +29,6 @@ class Login extends CI_Controller
             if ($existe == 1) {
                 $newdata = array(
                     'username'  => $data['username'],
-                    'nombre'  => $data['nombre'],
                     'logged_in' => TRUE
             );
             $this->session->set_userdata($newdata);
