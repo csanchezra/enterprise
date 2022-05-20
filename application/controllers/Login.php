@@ -13,7 +13,14 @@ class Login extends CI_Controller
 
     public function index()
     {
+      if (!$this->session->userdata('logged_in'))
+      {
         $this->load->view('users/login');
+      }
+      else
+      {
+          redirect('Home/index');
+      }
     }
 
 
@@ -29,11 +36,12 @@ class Login extends CI_Controller
             if ($existe == 1) {
                 $newdata = array(
                     'username'  => $data['username'],
+                    'nombre'  => $data['nombre'],
                     'logged_in' => TRUE
             );
             $this->session->set_userdata($newdata);
 
-            redirect('Home/index');
+            redirect('Home');
             }
             else
             {
